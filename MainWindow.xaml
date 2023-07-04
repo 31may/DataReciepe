@@ -1,0 +1,43 @@
+﻿<Window x:Class="DataReciepe.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Data Reciepe" Height="520" Width="640">
+    <Grid Margin="0,0,10,13">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="11*"/>
+            <ColumnDefinition Width="94*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Orientation="Vertical" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="1" Margin="152,0,0,0">
+            <TextBlock Text="Filter Recipes" FontSize="20" FontWeight="Bold" Margin="0 0 0 10"/>
+            <StackPanel Orientation="Horizontal" Margin="0 0 0 10">
+                <TextBlock Text="Ingredient Name:" Margin="0 0 5 0"/>
+                <TextBox x:Name="ingredientTextBox"/>
+                <Button Content="Filter" Click="FilterByIngredient_Click"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0 0 0 10">
+                <TextBlock Text="Food Group:" Margin="0 0 5 0"/>
+                <ComboBox x:Name="foodGroupComboBox" SelectedIndex="0">
+                    <ComboBoxItem Content="Select All"/>
+                    <ComboBoxItem Content="Group 1"/>
+                    <ComboBoxItem Content="Group 2"/>
+                    <ComboBoxItem Content="Group 3"/>
+                </ComboBox>
+                <Button Content="Filter" Click="FilterByFoodGroup_Click"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Maximum Calories:" Margin="0 0 5 0"/>
+                <TextBox x:Name="maxCaloriesTextBox"/>
+                <Button Content="Filter" Click="FilterByMaxCalories_Click"/>
+            </StackPanel>
+            <ListView x:Name="recipeListView" Margin="0 20 0 0">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Recipe Name" DisplayMemberBinding="{Binding Name}"/>
+                        <GridViewColumn Header="Ingredients" DisplayMemberBinding="{Binding Ingredients}"/>
+                        <GridViewColumn Header="Calories" DisplayMemberBinding="{Binding Calories}"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </StackPanel>
+    </Grid>
+</Window>
